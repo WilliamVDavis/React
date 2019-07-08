@@ -1,20 +1,45 @@
-import React, {useState} from "react";
-import Tweet from "./Tweet";
+import React, {Component} from 'react';
+import Card from 'react-bootstrap/Card';
+import './App.css'
 
-function App(){
-const [users, setUsers] = useState([
-  {name: "Will", message: "What's Up?" },
-  {name: "Dwyane", message: "I am a lady." },
-  {name: "Marvin", message: "In ya eye!" }
-]);
 
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      vehicles: []
+    }
+  }
+
+  componentDidMount() {
+    fetch("https://ghibliapi.herokuapp.com/vehicles/")
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        vehicles: data
+      })
+    })
+  }
+  render() {
   return (
-    <div className="app">
-    {users.map(user =>(
-      <Tweet name={user.name} message={user.message}/>
-    ))}
+    <div>
+      {this.state.vehicles.map((value, key) => (
+  <Card className="Card">
+    <Card.Img variant="top" src="" width="10px" height="120px" />
+    <Card.Body>
+      <Card.Title>Vehicle: {value.name}</Card.Title>
+      <Card.Text>
+      {value.description}
+      </Card.Text>
+    </Card.Body>
+    <Card.Footer>
+      <small className="text-muted">Last updated 23 mins ago</small>
+    </Card.Footer>
+  </Card>
+  ))}
     </div>
   );
+}
 }
 
 export default App;

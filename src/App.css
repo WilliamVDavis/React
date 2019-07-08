@@ -1,23 +1,9 @@
-.app{
-  height: 100vh;
-  background: lightgreen;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.App{
+  padding: 20px;
 }
-.tweet{
-  height: 200px;
-  width: 200px;
-  background: gray;
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border: 8px solid black;
-}
-
-.blue{
-  color: blue;
-  font-size: 32px;
-}
+.Card {
+  display: inline-flex;
+  padding: 20px;
+  width: 20rem;
+  margin: 20px;
+  }
